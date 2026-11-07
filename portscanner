@@ -3,17 +3,18 @@ import socket
 target_host = (input("host:"))
 target_ip = socket.gethostbyname(target_host)
 
-for port in range(1,1025):
-    #create socket(as I understand, it is what connects to the ports).
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    #I think TCP better then UDP in this them, i wont a full info.
-    s.settimeout(0.5)
+for port in range(1, 1025):    
+    # Create a socket (as I understand, it is what connects to the ports).
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)    
     
-    #result this operation    
-    result = s.connect_ex((target_ip, port))
-
-    #check, open or not.
-    if result == 0:
-        print(f"port {port} open")
-
-    s.close
+    # I think TCP is better than UDP in this theme, I want full info.
+    s.settimeout(0.5)        
+    
+    # Result of this operation:
+    result = s.connect_ex((target_ip, port))    
+    
+    # Check if it is open or not.
+    if result == 0:        
+        print(f"port {port} open")    
+        
+    s.close()
